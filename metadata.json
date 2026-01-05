@@ -1,0 +1,5 @@
+{
+  "name": "Marvel Hex Clash",
+  "description": "A strategic card battle game on a hexagonal grid. Collect Marvel heroes, build your deck, and steal cards from defeated opponents.",
+  "requestFramePermissions": []
+}

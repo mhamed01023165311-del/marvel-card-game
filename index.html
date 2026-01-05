@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marvel Card Game</title>
+<style>
+  body { background: #222; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; }
+  h1 { margin-top: 20px; }
+  .board { display: grid; grid-template-columns: repeat(4, 80px); gap: 10px; margin-top: 20px; }
+  .tile { width: 80px; height: 80px; background: #555; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 8px; font-weight: bold; }
+  .card { padding: 5px 10px; margin: 5px; background: #0af; cursor: pointer; border-radius: 5px; transition: transform 0.3s, box-shadow 0.3s; display: inline-block; }
+  .card.selected { transform: rotate(10deg) scale(1.2); box-shadow: 0 0 10px #0ff; }
+  #hand { margin-top: 20px; }
+</style>
+</head>
+<body>
+<h1>Marvel Card Game</h1>
+
+<div id="hand"></div>
+<div class="board" id="board"></div>
+
+<script>
+const hand = ['IronMan','Thor','Hawkeye','SpiderMan','Captain America'];
+let selectedCard = null;
+
+// عرض الكروت
+const handDiv = document.getElementById('hand');
+hand.forEach(name=>{
+  const c = document.createElement('div');
+  c.className='card';
+  c.innerText=name;
+  c.onclick = ()=>{
+    document.querySelectorAll('.card').forEach(el=>el.classList.remove('selected'));
+    c.classList.add('selected');
+    selectedCard = name;
+  };
+  handDiv.appendChild(c);
+});
+
+// عمل البورد 4x4
+const boardDiv = document.getElementById('board');
+for(let i=0;i<16;i++){
+  const tile = document.createElement('div');
+  tile.className='tile';
+  tile.onclick = ()=>{
+    if(selectedCard){
+      tile.innerText = selectedCard;
+      tile.style.background = '#0ff';
+    }
+  };
+  boardDiv.appendChild(tile);
+}
+</script>
+</body>
+</html>

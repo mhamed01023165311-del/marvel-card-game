@@ -225,4 +225,4 @@ export function simulateCombat(
     defenderHealth,
     roundsPlayed
   };
-}
+} 

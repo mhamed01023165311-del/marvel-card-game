@@ -72,4 +72,4 @@ export function takeDamage(player: Player, damage: number): boolean {
 
 export function healPlayer(player: Player, amount: number): void {
   player.health = Math.min(player.maxHealth, player.health + amount);
-    }
+    } 

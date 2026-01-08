@@ -1,5 +1,23 @@
 {
-  "name": "Marvel Hex Clash",
-  "description": "A strategic card battle game on a hexagonal grid. Collect Marvel heroes, build your deck, and steal cards from defeated opponents.",
-  "requestFramePermissions": []
+  "name": "Marvel Card Game",
+  "short_name": "MarvelCards",
+  "description": "لعبة بطاقات مارفل التكتيكية ثلاثية الأبعاد",
+  "theme_color": "#f0131e",
+  "background_color": "#0f0c29",
+  "display": "standalone",
+  "orientation": "landscape",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }

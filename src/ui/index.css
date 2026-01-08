@@ -1,5 +1,4 @@
-/* إعدادات CSS العامة للعبة */
-
+/* تنسيقات أساسية */
 * {
   margin: 0;
   padding: 0;
@@ -12,301 +11,95 @@ body {
   color: white;
   min-height: 100vh;
   overflow-x: hidden;
+  direction: rtl;
 }
 
 #root {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* أنيميشن التحميل */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes pulse {
-  0% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.05); }
-  100% { opacity: 0.5; transform: scale(1); }
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-
-@keyframes glow {
-  0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
-  50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
-  100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
-}
-
-/* التمرير المخصص */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #2D4263;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #C84B31;
-}
-
-/* الطباعة */
-@media print {
-  .no-print {
-    display: none !important;
-  }
-}
-
-/* الوسائط المتعددة */
-@media (max-width: 1200px) {
-  .responsive-layout {
-    flex-direction: column !important;
-  }
-  
-  .responsive-element {
-    width: 100% !important;
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .mobile-hide {
-    display: none !important;
-  }
-  
-  .mobile-center {
-    text-align: center !important;
-  }
-}
-
-/* فئات مساعدة */
-.text-center {
-  text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.mt-1 { margin-top: 0.25rem; }
-.mt-2 { margin-top: 0.5rem; }
-.mt-3 { margin-top: 1rem; }
-.mt-4 { margin-top: 1.5rem; }
-.mt-5 { margin-top: 3rem; }
-
-.mb-1 { margin-bottom: 0.25rem; }
-.mb-2 { margin-bottom: 0.5rem; }
-.mb-3 { margin-bottom: 1rem; }
-.mb-4 { margin-bottom: 1.5rem; }
-.mb-5 { margin-bottom: 3rem; }
-
-.p-1 { padding: 0.25rem; }
-.p-2 { padding: 0.5rem; }
-.p-3 { padding: 1rem; }
-.p-4 { padding: 1.5rem; }
-.p-5 { padding: 3rem; }
-
-.flex { display: flex; }
-.flex-col { flex-direction: column; }
-.items-center { align-items: center; }
-.justify-center { justify-content: center; }
-.justify-between { justify-content: space-between; }
-.flex-wrap { flex-wrap: wrap; }
-.gap-1 { gap: 0.25rem; }
-.gap-2 { gap: 0.5rem; }
-.gap-3 { gap: 1rem; }
-.gap-4 { gap: 1.5rem; }
-.gap-5 { gap: 3rem; }
-
-.rounded { border-radius: 0.25rem; }
-.rounded-lg { border-radius: 0.5rem; }
-.rounded-xl { border-radius: 0.75rem; }
-.rounded-2xl { border-radius: 1rem; }
-
-.shadow { box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-.shadow-lg { box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
-.shadow-xl { box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
-
-.bg-dark { background-color: #0A0A1A; }
-.bg-primary { background-color: #2D4263; }
-.bg-secondary { background-color: #C84B31; }
-.bg-success { background-color: #4CAF50; }
-.bg-warning { background-color: #FF9800; }
-.bg-danger { background-color: #f0131e; }
-
-.text-white { color: white; }
-.text-primary { color: #2D4263; }
-.text-secondary { color: #C84B31; }
-.text-success { color: #4CAF50; }
-.text-warning { color: #FF9800; }
-.text-danger { color: #f0131e; }
-
-.font-bold { font-weight: bold; }
-.font-bolder { font-weight: 800; }
-.text-sm { font-size: 0.875rem; }
-.text-base { font-size: 1rem; }
-.text-lg { font-size: 1.125rem; }
-.text-xl { font-size: 1.25rem; }
-.text-2xl { font-size: 1.5rem; }
-.text-3xl { font-size: 1.875rem; }
-.text-4xl { font-size: 2.25rem; }
-
-/* تأثيرات خاصة للعبة */
-.card-hover-effect:hover {
-  transform: translateY(-5px) scale(1.03);
-  transition: all 0.3s ease;
-}
-
-.button-hover-effect:hover {
-  transform: scale(1.05);
-  filter: brightness(1.2);
-  transition: all 0.2s ease;
-}
-
-.pulse-animation {
-  animation: pulse 2s infinite;
-}
-
-.float-animation {
-  animation: float 3s ease-in-out infinite;
-}
-
-.glow-animation {
-  animation: glow 2s infinite;
-}
-
-/* تأثيرات النص */
-.text-glow {
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-}
-
-.text-shadow {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-/* تأثيرات البطاقات */
-.card-3d {
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
-
-.card-flip {
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-}
-
-.card-flipped {
-  transform: rotateY(180deg);
-}
-
-.card-front, .card-back {
-  backface-visibility: hidden;
-  position: absolute;
+/* شاشة التحميل */
+.loading-screen {
+  position: fixed;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #0f0c29, #302b63);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: opacity 0.5s ease;
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-content {
+  text-align: center;
+  max-width: 500px;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  border: 2px solid #f0131e;
+}
+
+.loading-logo {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #f0131e;
+}
+
+.loading-title {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: white;
+}
+
+/* شريط التحميل */
+.progress-container {
   width: 100%;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.progress-bar {
   height: 100%;
+  background: linear-gradient(90deg, #f0131e, #ff6b6b);
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: 10px;
 }
 
-.card-back {
-  transform: rotateY(180deg);
+/* النسبة المئوية */
+.percentage {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
 }
 
-/* تأثيرات اللوحة */
-.tile-grid {
-  display: grid;
-  gap: 2px;
+/* حالة التحميل */
+.loading-status {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 15px;
+  min-height: 24px;
 }
 
-.tile-grid-3x3 {
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-}
-
-.tile-grid-5x5 {
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-}
-
-/* تأثيرات الرسوم المتحركة للقتال */
-@keyframes attack {
-  0% { transform: translateX(0); }
-  50% { transform: translateX(20px); }
-  100% { transform: translateX(0); }
-}
-
-@keyframes takeDamage {
-  0% { transform: scale(1); color: white; }
-  50% { transform: scale(1.1); color: red; }
-  100% { transform: scale(1); color: white; }
-}
-
-@keyframes heal {
-  0% { transform: scale(1); color: white; }
-  50% { transform: scale(1.1); color: green; }
-  100% { transform: scale(1); color: white; }
-}
-
-.attack-animation {
-  animation: attack 0.5s ease;
-}
-
-.damage-animation {
-  animation: takeDamage 0.5s ease;
-}
-
-.heal-animation {
-  animation: heal 0.5s ease;
-}
-
-/* تأثيرات الظهور */
-.fade-in {
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.slide-in-left {
-  animation: slideInLeft 0.5s ease;
-}
-
-@keyframes slideInLeft {
-  from { transform: translateX(-50px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
-.slide-in-right {
-  animation: slideInRight 0.5s ease;
-}
-
-@keyframes slideInRight {
-  from { transform: translateX(50px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
-/* تأثيرات التحميل */
-.loading-dots::after {
+/* المؤشر */
+.dot-animation::after {
   content: '';
-  animation: dots 1.5s steps(4, end) infinite;
+  animation: dots 1.5s infinite;
 }
 
 @keyframes dots {
@@ -316,86 +109,66 @@ body {
   80%, 100% { content: '...'; }
 }
 
-/* تأثيرات خاصة للمارفل */
-.marvel-logo-effect {
-  background: linear-gradient(45deg, #f0131e, #0066FF, #FFD700);
-  background-size: 200% 200%;
-  animation: gradient-shift 3s ease infinite;
+/* الرسم البياني الصغير */
+.loading-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
 }
 
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.stat-item {
+  text-align: center;
 }
 
-/* تأثيرات ثلاثية الأبعاد */
-.perspective-1000 {
-  perspective: 1000px;
+.stat-value {
+  font-weight: bold;
+  color: white;
+  font-size: 16px;
 }
 
-.transform-3d {
-  transform-style: preserve-3d;
+/* رسائل الخطأ */
+.error-message {
+  color: #ff6b6b;
+  margin-top: 20px;
+  padding: 10px;
+  background: rgba(255, 107, 107, 0.1);
+  border-radius: 5px;
+  border: 1px solid #ff6b6b;
 }
 
-.rotate-y-180 {
-  transform: rotateY(180deg);
+/* زر الإلغاء */
+.cancel-button {
+  margin-top: 20px;
+  padding: 10px 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: 'Cairo', sans-serif;
+  font-size: 16px;
+  transition: all 0.3s ease;
 }
 
-.backface-hidden {
-  backface-visibility: hidden;
+.cancel-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
 }
 
-/* تأثيرات الضوء */
-.light-effect {
-  background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
-}
-
-/* تأثيرات الحروف العربية */
-.arabic-text {
-  letter-spacing: 0;
-  line-height: 1.8;
-  text-align: right;
-}
-
-.arabic-heading {
-  font-weight: 700;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
-
-/* تأثيرات الإنجازات */
-.achievement-glow {
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
-}
-
-/* تأثيرات النقاط */
-.points-pop {
-  animation: pop 0.5s ease;
-}
-
-@keyframes pop {
-  0% { transform: scale(0); }
-  70% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
-
-/* تأثيرات الكومبو */
-.combo-effect {
-  animation: combo 1s ease infinite;
-}
-
-@keyframes combo {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-
-/* تأثيرات الفوز */
-.victory-effect {
-  animation: victory 2s ease infinite;
-}
-
-@keyframes victory {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-5deg); }
-  75% { transform: rotate(5deg); }
-} 
+/* تصميم متجاوب */
+@media (max-width: 768px) {
+  .loading-content {
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  .loading-title {
+    font-size: 22px;
+  }
+  
+  .percentage {
+    font-size: 20px;
+  }
+       }

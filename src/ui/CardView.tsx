@@ -443,4 +443,4 @@ const styles = {
   },
 };
 
-export default CardView;
+export default CardView; 

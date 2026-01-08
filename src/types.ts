@@ -1,4 +1,4 @@
-// تعريف أنواع اللعبة
+// أنواع البيانات الأساسية للعبة
 
 export type CardType = 'attack' | 'defense' | 'ranged' | 'mixed';
 export type Rarity = 'common' | 'rare' | 'epic' | 'legendary';
@@ -88,44 +88,4 @@ export interface CombatResult {
   damage: number;
   isCritical: boolean;
   abilitiesUsed: string[];
-}
-
-export interface AnimationState {
-  type: 'cardPlay' | 'attack' | 'defense' | 'special';
-  isPlaying: boolean;
-  duration: number;
-  progress: number;
-  data?: any;
-}
-
-// إحصائيات اللاعب
-export interface PlayerStats {
-  totalWins: number;
-  totalLosses: number;
-  cardsCollected: number;
-  highestDamage: number;
-  favoriteHero: string;
-  playTime: number;
-}
-
-// تحديات الإنجازات
-export interface Achievement {
-  id: string;
-  name: string;
-  description: string;
-  icon: string;
-  isUnlocked: boolean;
-  unlockDate?: Date;
-  requirements: {
-    type: 'win' | 'damage' | 'collection' | 'combo';
-    value: number;
-  };
-}
-
-// حدث في اللعبة
-export interface GameEvent {
-  type: 'cardPlayed' | 'attack' | 'abilityUsed' | 'turnEnd' | 'gameEnd';
-  player: PlayerSide;
-  timestamp: Date;
-  data: any;
 }

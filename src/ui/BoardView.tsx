@@ -247,4 +247,4 @@ const styles = {
   },
 };
 
-export default BoardView;
+export default BoardView; 

@@ -185,4 +185,4 @@ export function getCharactersInRange(
     if (char === centerCharacter) return false;
     return getCharacterDistance(centerCharacter, char) <= range;
   });
-                    }
+                    } 

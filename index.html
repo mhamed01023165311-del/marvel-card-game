@@ -1,56 +1,64 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marvel Card Game</title>
-<style>
-  body { background: #222; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; }
-  h1 { margin-top: 20px; }
-  .board { display: grid; grid-template-columns: repeat(4, 80px); gap: 10px; margin-top: 20px; }
-  .tile { width: 80px; height: 80px; background: #555; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 8px; font-weight: bold; }
-  .card { padding: 5px 10px; margin: 5px; background: #0af; cursor: pointer; border-radius: 5px; transition: transform 0.3s, box-shadow 0.3s; display: inline-block; }
-  .card.selected { transform: rotate(10deg) scale(1.2); box-shadow: 0 0 10px #0ff; }
-  #hand { margin-top: 20px; }
-</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>لعبة بطاقات مارفل التكتيكية | Marvel Tactical Card Game</title>
+    <meta name="description" content="لعبة بطاقات تكتيكية ثلاثية الأبعاد تعتمد على أبطال مارفل" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        #root {
+            min-height: 100vh;
+        }
+        
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            gap: 20px;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-top: 5px solid #f0131e;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-<h1>Marvel Card Game</h1>
-
-<div id="hand"></div>
-<div class="board" id="board"></div>
-
-<script>
-const hand = ['IronMan','Thor','Hawkeye','SpiderMan','Captain America'];
-let selectedCard = null;
-
-// عرض الكروت
-const handDiv = document.getElementById('hand');
-hand.forEach(name=>{
-  const c = document.createElement('div');
-  c.className='card';
-  c.innerText=name;
-  c.onclick = ()=>{
-    document.querySelectorAll('.card').forEach(el=>el.classList.remove('selected'));
-    c.classList.add('selected');
-    selectedCard = name;
-  };
-  handDiv.appendChild(c);
-});
-
-// عمل البورد 4x4
-const boardDiv = document.getElementById('board');
-for(let i=0;i<16;i++){
-  const tile = document.createElement('div');
-  tile.className='tile';
-  tile.onclick = ()=>{
-    if(selectedCard){
-      tile.innerText = selectedCard;
-      tile.style.background = '#0ff';
-    }
-  };
-  boardDiv.appendChild(tile);
-}
-</script>
+    <div id="root">
+        <div class="loading">
+            <div class="loader"></div>
+            <p>جاري تحميل لعبة بطاقات مارفل...</p>
+        </div>
+    </div>
+    <script type="module" src="/src/index.tsx"></script>
 </body>
 </html>

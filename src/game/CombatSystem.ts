@@ -8,7 +8,6 @@ export function calculateDamage(attacker: Card, defender: Card): CombatResult {
   let damage = Math.max(1, baseDamage - defenseReduction);
   damage *= (1 + speedBonus);
   
-  // فرصة الضربة الحرجة
   const criticalChance = attacker.speed * 0.05;
   const isCritical = Math.random() < criticalChance;
   
@@ -16,10 +15,7 @@ export function calculateDamage(attacker: Card, defender: Card): CombatResult {
     damage *= 1.5;
   }
   
-  // تطبيق القدرات الخاصة
   let abilitiesUsed: string[] = [];
-  
-  // تقريب الضرر لعدد صحيح
   damage = Math.round(damage);
   
   return {
@@ -31,15 +27,15 @@ export function calculateDamage(attacker: Card, defender: Card): CombatResult {
   };
 }
 
-export function calculateDamageWithAdvantage(attacker: Card, _defender: Card, distance: number): CombatResult {
-  // استخدام _defender بدل defender لتجنب تحذير عدم الاستخدام
+// استبدل المتغيرات الزيادة بـ _
+export function calculateDamageWithAdvantage(attacker: Card, _defender: Card, _distance: number): CombatResult {
   const result = calculateDamage(attacker, _defender);
-  result.damage = Math.round(result.damage * 1.0); // إزالة التأثير لتبسيط الكود
+  result.damage = Math.round(result.damage * 1.0);
   return result;
 }
 
-// دوال مساعدة بسيطة
-export function canAttack(attacker: Card, defender: Card, distance: number): boolean {
+// استبدل defender بـ _defender
+export function canAttack(attacker: Card, _defender: Card, distance: number): boolean {
   const maxRange = getAttackRange(attacker);
   return distance <= maxRange;
 }

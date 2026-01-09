@@ -4,7 +4,7 @@ import { getTypeColor, getRarityColor } from '../constants';
 
 interface CardViewProps {
   card: Card;
-  onClose?: () => void;
+  onClose?: () => void; // احتفظ بها لكن مش هنستخدمها
   onClick?: (card: Card) => void;
   isSelected?: boolean;
   isPlayable?: boolean;
@@ -13,7 +13,7 @@ interface CardViewProps {
 
 const CardView: React.FC<CardViewProps> = ({
   card,
-  onClose,
+  // onClose, // احذف من هنا عشان ميتحذرش
   onClick,
   isSelected = false,
   isPlayable = true,

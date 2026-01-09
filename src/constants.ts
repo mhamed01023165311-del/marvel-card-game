@@ -81,3 +81,24 @@ export const GAME_CONSTANTS = {
     }
   ]
 };
+
+// أضيف هاتين الدالتين
+export const getTypeColor = (type: string): string => {
+  const colors: Record<string, string> = {
+    attack: GAME_CONSTANTS.COLORS.ATTACK,
+    defense: GAME_CONSTANTS.COLORS.DEFENSE,
+    ranged: GAME_CONSTANTS.COLORS.RANGED,
+    mixed: GAME_CONSTANTS.COLORS.MIXED
+  };
+  return colors[type] || GAME_CONSTANTS.COLORS.MIXED;
+};
+
+export const getRarityColor = (rarity: string): string => {
+  const colors: Record<string, string> = {
+    common: GAME_CONSTANTS.COLORS.COMMON,
+    rare: GAME_CONSTANTS.COLORS.RARE,
+    epic: GAME_CONSTANTS.COLORS.EPIC,
+    legendary: GAME_CONSTANTS.COLORS.LEGENDARY
+  };
+  return colors[rarity] || GAME_CONSTANTS.COLORS.COMMON;
+};

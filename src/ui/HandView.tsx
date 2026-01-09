@@ -35,7 +35,7 @@ const HandView: React.FC<HandViewProps> = ({
       </div>
 
       <div style={styles.cardsContainer}>
-        {cards.map((card, index) => (
+        {cards.map((card, _index) => ( // استبدل index بـ _index
           <div key={card.id} style={styles.cardWrapper}>
             <CardView
               card={card}

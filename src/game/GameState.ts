@@ -1,4 +1,4 @@
-import { GameState, Player, Card, Tile, GamePhase, PlayerSide } from '../types';
+import { GameState, Card, PlayerSide } from '../types';
 import { GAME_CONSTANTS } from '../constants';
 import { createBoard } from './Board';
 import { createPlayer } from './Player';
@@ -81,6 +81,46 @@ export class GameStateManager {
     this.notifyListeners();
   }
 
+  // أضف دالة playCard المفقودة
+  playCard(tile: any): void {
+    if (!this.state.selectedCard) return;
+    
+    const currentPlayer = this.state.players[this.state.currentPlayerIndex];
+    const cardCost = this.calculateCardCost(this.state.selectedCard);
+    
+    if (currentPlayer.mana < cardCost) {
+      this.state.messages.push('لا تملك ما يكفي من المانا!');
+      return;
+    }
+
+    // وضع البطاقة على اللوحة
+    this.state.board.tiles[tile.y][tile.x].occupiedBy = this.state.selectedCard.id;
+    this.state.board.tiles[tile.y][tile.x].playerSide = currentPlayer.side;
+    
+    // خصم المانا
+    currentPlayer.mana -= cardCost;
+    
+    // إزالة البطاقة من اليد
+    currentPlayer.hand = currentPlayer.hand.filter(c => c.id !== this.state.selectedCard!.id);
+    
+    this.state.selectedCard = undefined;
+    this.state.phase = 'attack';
+    this.state.messages.push(`لَعِبت ${currentPlayer.name} بطاقة`);
+    
+    this.notifyListeners();
+  }
+
+  private calculateCardCost(card: Card): number {
+    const baseCost = 3;
+    const rarityMultiplier = {
+      common: 1,
+      rare: 1.5,
+      epic: 2,
+      legendary: 3
+    };
+    return Math.floor(baseCost * (rarityMultiplier[card.rarity as keyof typeof rarityMultiplier] || 1) * card.level);
+  }
+
   private checkGameEnd(): void {
     if (this.state.turn >= this.state.maxTurns) {
       this.endGame();
@@ -113,4 +153,4 @@ export class GameStateManager {
     this.state = this.createInitialState();
     this.notifyListeners();
   }
-  } 
+      }
